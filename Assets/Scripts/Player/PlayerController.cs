@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
 	private Collider2D coll;
 	//private Animator anim;
 
+	public bool canRewind;
+	public bool rewinding;
+	public GhostController ghost;
+	public LinkController link;
+
 	//[HideInInspector]
 	public bool grounded;
 	public LayerMask collidableMask;
@@ -33,12 +38,21 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!GameManager.instance.isPaused)
 		{
-			CheckGround();
-			Move();
-			Jump();
+			if (!rewinding)
+			{
+				CheckGround();
+				Move();
+				Jump();
 
-			UpdatePositionsBuffer();
-			//UpdateAnimatorParameters();
+				UpdatePositionsBuffer();
+				CheckRewind();
+
+				//UpdateAnimatorParameters();
+			}
+			else
+			{
+				Rewind();
+			}
 		}
 	}
 
@@ -80,7 +94,47 @@ public class PlayerController : MonoBehaviour
 		GameManager.instance.positionsBuffer.Add(transform.position);
 		if(GameManager.instance.positionsBuffer.Count > GameManager.instance.positionsNb)
 		{
+			if(canRewind == false)
+			{
+				canRewind = true;
+				ghost.gameObject.SetActive(true);
+				link.gameObject.SetActive(true);
+			}
+				GameManager.instance.positionsBuffer.RemoveAt(0);
+		}
+	}
+
+	void CheckRewind()
+	{
+		if (Input.GetKeyDown(KeyCode.E) && canRewind)
+		{
+			canRewind = false;
+			coll.isTrigger = true;
+			rb.gravityScale = 0.0f;
+			GameManager.instance.positionsBuffer.Reverse();
+			rewinding = true;
+		}
+	}
+
+	void Rewind()
+	{
+		if (GameManager.instance.positionsBuffer.Count > 3)
+		{
+			transform.position = GameManager.instance.positionsBuffer[0];
+			GameManager.instance.positionsBuffer.RemoveAt(2);
+			GameManager.instance.positionsBuffer.RemoveAt(1);
 			GameManager.instance.positionsBuffer.RemoveAt(0);
+		}
+		else
+		{
+			GameManager.instance.positionsBuffer.Reverse();
+			transform.position = GameManager.instance.positionsBuffer[0];
+			GameManager.instance.positionsBuffer.Clear();
+			ghost.gameObject.SetActive(false);
+			link.gameObject.SetActive(false);
+			coll.isTrigger = false;
+			rb.gravityScale = 1.0f;
+			rewinding = false;
 		}
 	}
 }
