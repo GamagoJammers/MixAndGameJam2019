@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 	//[HideInInspector]
 	public bool isPaused;
 
+	public PlayerController player;
+
 	public int positionsNb;
 	public List<Vector3> positionsBuffer;
 

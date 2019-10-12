@@ -6,7 +6,7 @@ public class GhostController : MonoBehaviour
 {
 	private void Update()
 	{
-		if(GameManager.instance.positionsBuffer.Count == GameManager.instance.positionsNb)
+		if(GameManager.instance.positionsBuffer.Count == GameManager.instance.positionsNb && !GameManager.instance.player.rewinding)
 		{
 			transform.position = GameManager.instance.positionsBuffer[0];
 		}
