@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 			Move();
 			Jump();
 
+			UpdatePositionsBuffer();
 			//UpdateAnimatorParameters();
 		}
 	}
@@ -72,5 +73,14 @@ public class PlayerController : MonoBehaviour
 			rb.velocity += Vector2.up * Physics2D.gravity.y * (fallingCoefficient - 1) * Time.deltaTime;
 		else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
 			rb.velocity += Vector2.up * Physics2D.gravity.y * (smallJumpCoefficient - 1) * Time.deltaTime;
+	}
+
+	void UpdatePositionsBuffer()
+	{
+		GameManager.instance.positionsBuffer.Add(transform.position);
+		if(GameManager.instance.positionsBuffer.Count > GameManager.instance.positionsNb)
+		{
+			GameManager.instance.positionsBuffer.RemoveAt(0);
+		}
 	}
 }

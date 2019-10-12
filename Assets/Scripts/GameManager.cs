@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 	//[HideInInspector]
 	public bool isPaused;
 
+	public int positionsNb;
+	public List<Vector3> positionsBuffer;
+
 	private void Awake()
 	{
 		if (instance == null)
@@ -19,5 +22,7 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 		}
+
+		positionsBuffer = new List<Vector3>();
 	}
 }
