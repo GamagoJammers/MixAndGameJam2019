@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   player: {fileID: 0}
+  playerStopped: 0
+  linkUnlocked: 1
+  rewindUnlocked: 1
+  bufferUnlocked: 1
   positionsNb: 120
   positionsBuffer: []
   UIAnim: {fileID: 0}

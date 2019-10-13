@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
 	public bool isPaused;
 
 	public PlayerController player;
+	public bool playerStopped;
+	public bool linkUnlocked;
+	public bool rewindUnlocked;
 
+	public bool bufferUnlocked;
 	public int positionsNb;
-	[HideInInspector]
+	//[HideInInspector]
 	public List<Vector3> positionsBuffer;
 
 	public Animator UIAnim;

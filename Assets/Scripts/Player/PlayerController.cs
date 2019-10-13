@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	private Rigidbody2D rb;
+	[HideInInspector]
+	public Rigidbody2D rb;
 	private Collider2D coll;
-    private Animator anim;
+	[HideInInspector]
+	public Animator anim;
 	//private Animator anim;
 
+	public bool rewindUnlocked;
 	public bool canRewind;
 	public bool rewinding;
 	public GhostController ghost;
@@ -52,13 +55,15 @@ public class PlayerController : MonoBehaviour
 			if (!rewinding)
 			{
 				CheckGround();
-				Move();
-				Jump();
+
+				if(!GameManager.instance.playerStopped)
+				{
+					Move();
+					Jump();
+				}
 
 				CheckRewind();
 				CheckReset();
-
-				//UpdateAnimatorParameters();
 			}
 			else
 			{
@@ -82,28 +87,23 @@ public class PlayerController : MonoBehaviour
 
 	void Move()
 	{
-        if (Input.GetAxis("Horizontal") > 0)
-        {
-            transform.localScale = new Vector3(2, 2, 1);
-        }
-        else if (Input.GetAxis("Horizontal") < 0)
-        {
-            transform.localScale = new Vector3(-2, 2, 1);
-        }
-
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            anim.SetTrigger("Walk");
-        }
-        else
-        {
-            anim.SetTrigger("Idle");
-
-        }
         directionX = Input.GetAxis("Horizontal");
 		float velocityX = directionX * speed;
 		if (!grounded)
 			velocityX *= airControlCoefficient;
+
+		if(velocityX != 0)
+		{
+			if(velocityX > 0)
+				transform.localScale = new Vector3(2, 2, 1);
+			else
+				transform.localScale = new Vector3(-2, 2, 1);
+			anim.SetTrigger("Walk");
+		}
+		else
+		{
+			anim.SetTrigger("Idle");
+		}
 
 		rb.velocity = new Vector2(velocityX, rb.velocity.y);
         //anim.SetFloat("Speed", Mathf.Abs(velocityX) / speed);
@@ -132,20 +132,23 @@ public class PlayerController : MonoBehaviour
 		GameManager.instance.positionsBuffer.Add(transform.position);
 		if(GameManager.instance.positionsBuffer.Count > GameManager.instance.positionsNb)
 		{
-			if(canRewind == false)
+			if(canRewind == false && GameManager.instance.linkUnlocked)
 			{
 				if(actualLinkReappearingCoroutine == null)
 				{
 					actualLinkReappearingCoroutine = StartCoroutine(LinkReappearingCoroutine());
 				}
 			}
-			GameManager.instance.positionsBuffer.RemoveAt(0);
+			if (GameManager.instance.bufferUnlocked)
+				GameManager.instance.positionsBuffer.RemoveAt(0);
+			else
+				GameManager.instance.positionsBuffer.RemoveAt(GameManager.instance.positionsBuffer.Count-1);
 		}
 	}
 
 	void CheckRewind()
 	{
-		if (Input.GetKeyDown(KeyCode.E) && canRewind)
+		if (Input.GetKeyDown(KeyCode.E) && canRewind && GameManager.instance.rewindUnlocked)
 		{
 			canRewind = false;
 			coll.isTrigger = true;
