@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RewindTutorial : MonoBehaviour
 {
-	public GameObject tutorialSprite;
+	public GameObject rewindTutorialSprite;
+	public GameObject resetTutorialSprite;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -30,11 +31,12 @@ public class RewindTutorial : MonoBehaviour
 		yield return new WaitUntil(() => GameManager.instance.player.link.appearing == false);
 		yield return new WaitForSeconds(0.75f);
 
-		tutorialSprite.SetActive(true);
+		rewindTutorialSprite.SetActive(true);
 		GameManager.instance.rewindUnlocked = true;
 
 		yield return new WaitUntil(() => GameManager.instance.player.rewinding == true);
 
+		resetTutorialSprite.SetActive(true);
 		GameManager.instance.bufferUnlocked = true;
 		Physics2D.gravity = new Vector2(0.0f, -25.0f);
 		GameManager.instance.player.anim.speed = 1;
