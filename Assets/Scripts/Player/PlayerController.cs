@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	private Rigidbody2D rb;
 	private Collider2D coll;
+    private Animator anim;
 	//private Animator anim;
 
 	public bool canRewind;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		coll = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
 		//anim = GetComponent<Animator>();
 	}
 
@@ -73,27 +75,55 @@ public class PlayerController : MonoBehaviour
 			grounded = true;
 		else
 			grounded = false;
-	}
+        anim.SetBool("Grounded", grounded);
+    }
 
 	void Move()
 	{
-		directionX = Input.GetAxis("Horizontal");
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            transform.localScale = new Vector3(2, 2, 1);
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            transform.localScale = new Vector3(-2, 2, 1);
+        }
+
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            anim.SetTrigger("Walk");
+        }
+        else
+        {
+            anim.ResetTrigger("Walk");
+            anim.SetTrigger("Idle");
+
+        }
+        directionX = Input.GetAxis("Horizontal");
 		float velocityX = directionX * speed;
 		if (!grounded)
 			velocityX *= airControlCoefficient;
 
 		rb.velocity = new Vector2(velocityX, rb.velocity.y);
-	}
+        //anim.SetFloat("Speed", Mathf.Abs(velocityX) / speed);
+    }
 
 	void Jump()
 	{
-		if(Input.GetButtonDown("Jump") && grounded)
-			rb.velocity += Vector2.up * jumpVelocity;
-
-		if (rb.velocity.y < 0)
-			rb.velocity += Vector2.up * Physics2D.gravity.y * (fallingCoefficient - 1) * Time.deltaTime;
-		else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-			rb.velocity += Vector2.up * Physics2D.gravity.y * (smallJumpCoefficient - 1) * Time.deltaTime;
+        if (Input.GetButtonDown("Jump") && grounded)
+        {
+            rb.velocity += Vector2.up * jumpVelocity;
+            anim.SetTrigger("Jump");
+        }
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallingCoefficient - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (smallJumpCoefficient - 1) * Time.deltaTime;
+        }
+            
 	}
 
 	void UpdatePositionsBuffer()
