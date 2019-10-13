@@ -476,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 1584674075512874201, guid: 127d77196be3ab84a91cf222f8d108d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1584674075512874201, guid: 127d77196be3ab84a91cf222f8d108d8,
         type: 3}
@@ -550,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 7243019407029681378, guid: 4aaad19ee39b0bc4e92101f9c78250b7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7243019407029681378, guid: 4aaad19ee39b0bc4e92101f9c78250b7,
         type: 3}
@@ -1012,7 +1012,7 @@ PrefabInstance:
     - target: {fileID: 6628346153495552492, guid: 0f0779620ef4d3943a4c7b386189fa34,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6628346153495552492, guid: 0f0779620ef4d3943a4c7b386189fa34,
         type: 3}
@@ -1131,7 +1131,7 @@ PrefabInstance:
     - target: {fileID: 3888410707950934163, guid: 58177e0daaefc594aaa88d17d0395a9c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.47
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3888410707950934163, guid: 58177e0daaefc594aaa88d17d0395a9c,
         type: 3}
@@ -1182,6 +1182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888410707950934161, guid: 58177e0daaefc594aaa88d17d0395a9c,
+        type: 3}
+      propertyPath: sceneToLoad
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58177e0daaefc594aaa88d17d0395a9c, type: 3}
@@ -4006,7 +4011,7 @@ PrefabInstance:
     - target: {fileID: 5180838794096914607, guid: b08aa89c3f4f10c4dafc93090552d24b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5180838794096914607, guid: b08aa89c3f4f10c4dafc93090552d24b,
         type: 3}
@@ -4086,7 +4091,7 @@ PrefabInstance:
     - target: {fileID: 5794304725670222109, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5794304725670222109, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
         type: 3}
@@ -4257,7 +4262,7 @@ PrefabInstance:
     - target: {fileID: 2734270862450939603, guid: 806515c7b74cb064e9e8f97eb41e4d33,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2734270862450939603, guid: 806515c7b74cb064e9e8f97eb41e4d33,
         type: 3}
@@ -4422,7 +4427,7 @@ PrefabInstance:
     - target: {fileID: 2734270862450939603, guid: 806515c7b74cb064e9e8f97eb41e4d33,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2734270862450939603, guid: 806515c7b74cb064e9e8f97eb41e4d33,
         type: 3}
@@ -10449,7 +10454,7 @@ PrefabInstance:
     - target: {fileID: 1584674075512874201, guid: 127d77196be3ab84a91cf222f8d108d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1584674075512874201, guid: 127d77196be3ab84a91cf222f8d108d8,
         type: 3}
@@ -10598,7 +10603,7 @@ PrefabInstance:
     - target: {fileID: 5317163431096542472, guid: 44167d753ea9ee34c9a5dd75f5b56c0e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5317163431096542472, guid: 44167d753ea9ee34c9a5dd75f5b56c0e,
         type: 3}
@@ -10660,5 +10665,5 @@ Transform:
   - {fileID: 1932758074}
   - {fileID: 818518368}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
