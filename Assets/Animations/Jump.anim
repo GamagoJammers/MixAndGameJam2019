@@ -96,7 +96,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.16666667
-        value: {x: 0, y: 0, z: 34.614002}
+        value: {x: 0, y: 0, z: 15}
         inSlope: {x: 0, y: 0, z: 33.73569}
         outSlope: {x: 0, y: 0, z: 33.73569}
         tangentMode: 0
@@ -130,7 +130,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.16666667
-        value: {x: 0, y: 0, z: -29.477001}
+        value: {x: 0, y: 0, z: -15}
         inSlope: {x: 0, y: 0, z: -42.384926}
         outSlope: {x: 0, y: 0, z: -42.384926}
         tangentMode: 0
@@ -1085,7 +1085,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.16666667
-        value: 34.614002
+        value: 15
         inSlope: 33.73569
         outSlope: 33.73569
         tangentMode: 136
@@ -1196,7 +1196,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.16666667
-        value: -29.477001
+        value: -15
         inSlope: -42.384926
         outSlope: -42.384926
         tangentMode: 136
@@ -1395,7 +1395,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: LeftArmPivot
+    path: RightLegPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1405,7 +1405,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: LeftArmPivot
+    path: RightLegPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1415,7 +1415,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: LeftArmPivot
+    path: RightLegPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1455,7 +1455,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: RightArmPivot
+    path: LeftArmPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1465,7 +1465,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: RightArmPivot
+    path: LeftArmPivot
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: LeftArmPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1484,18 +1494,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: RightLegPivot
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: RightLegPivot
+    path: RightArmPivot
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1505,7 +1505,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: RightLegPivot
+    path: RightArmPivot
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

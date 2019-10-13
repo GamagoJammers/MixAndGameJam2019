@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
 	public Animator UIAnim;
 
+	public Coroutine actualDeathCoroutine;
+
 	private void Awake()
 	{
 		if (instance == null)
@@ -45,8 +47,6 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator DeathCoroutine()
 	{
-		//death anim/particules ?
-
 		StartCoroutine(FadeCoroutine("FadeOut"));
 		yield return new WaitUntil(() => isPaused == false);
 

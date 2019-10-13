@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            anim.ResetTrigger("Walk");
             anim.SetTrigger("Idle");
 
         }
@@ -186,7 +185,10 @@ public class PlayerController : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.R))
 		{
-			GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
+			if (GameManager.instance.actualDeathCoroutine == null)
+			{
+				GameManager.instance.actualDeathCoroutine = GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
+			}
 		}
 	}
 
