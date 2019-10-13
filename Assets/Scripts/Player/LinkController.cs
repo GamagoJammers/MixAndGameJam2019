@@ -15,7 +15,10 @@ public class LinkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		line.positionCount = GameManager.instance.positionsBuffer.Count;
-		line.SetPositions(GameManager.instance.positionsBuffer.ToArray());
+		if(!GameManager.instance.isPaused)
+		{
+			line.positionCount = GameManager.instance.positionsBuffer.Count;
+			line.SetPositions(GameManager.instance.positionsBuffer.ToArray());
+		}
     }
 }
