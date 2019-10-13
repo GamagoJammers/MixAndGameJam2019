@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 	public float smallJumpCoefficient;
 	public float airControlCoefficient;
 
+	public Coroutine actualLinkReappearingCoroutine;
+
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -133,11 +135,12 @@ public class PlayerController : MonoBehaviour
 		{
 			if(canRewind == false)
 			{
-				canRewind = true;
-				ghost.gameObject.SetActive(true);
-				link.gameObject.SetActive(true);
+				if(actualLinkReappearingCoroutine == null)
+				{
+					actualLinkReappearingCoroutine = StartCoroutine(LinkReappearingCoroutine());
+				}
 			}
-				GameManager.instance.positionsBuffer.RemoveAt(0);
+			GameManager.instance.positionsBuffer.RemoveAt(0);
 		}
 	}
 
@@ -168,7 +171,7 @@ public class PlayerController : MonoBehaviour
 			GameManager.instance.positionsBuffer.Reverse();
 			transform.position = GameManager.instance.positionsBuffer[0];
 			GameManager.instance.positionsBuffer.Clear();
-			ghost.gameObject.SetActive(false);
+			ghost.GetComponent<MeshRenderer>().enabled = false;
 			link.gameObject.SetActive(false);
 			coll.isTrigger = false;
 			rb.gravityScale = 1.0f;
@@ -183,5 +186,16 @@ public class PlayerController : MonoBehaviour
 		{
 			GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
 		}
+	}
+
+	IEnumerator LinkReappearingCoroutine()
+	{
+		link.appearing = true;
+		link.gameObject.SetActive(true);
+		link.StartCoroutine(link.AppearingCouroutine());
+		yield return new WaitUntil(() => link.appearing == false);
+		ghost.GetComponent<MeshRenderer>().enabled = true;
+		canRewind = true;
+		actualLinkReappearingCoroutine = null;
 	}
 }
