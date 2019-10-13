@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	public GhostController ghost;
 	public LinkController link;
 	public ParticleSystem rewindParticles;
+	public AudioSource rewindSound;
 
 	//[HideInInspector]
 	public bool grounded;
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour
 			GameManager.instance.positionsBuffer.Reverse();
 			rewinding = true;
 			rewindParticles.Play();
+			rewindSound.Play();
 		}
 	}
 
