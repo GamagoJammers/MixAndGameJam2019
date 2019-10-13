@@ -4613,26 +4613,6 @@ PrefabInstance:
       propertyPath: link
       value: 
       objectReference: {fileID: 345453569}
-    - target: {fileID: 5794304725670222111, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794304725670222111, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.017151177
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794304725670222111, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794304725670222111, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.5088438
-      objectReference: {fileID: 0}
     - target: {fileID: 5794304725670222110, guid: 8843d6bd4faf2cb4aa9e3697faec9543,
         type: 3}
       propertyPath: m_Sprite
