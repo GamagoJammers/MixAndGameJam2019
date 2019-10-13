@@ -55,7 +55,10 @@ public class AlternatingTrap : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
+			if (GameManager.instance.actualDeathCoroutine == null)
+			{
+				GameManager.instance.actualDeathCoroutine = GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
+			}
 		}
 	}
 }
