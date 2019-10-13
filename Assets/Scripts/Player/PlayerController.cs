@@ -171,6 +171,8 @@ public class PlayerController : MonoBehaviour
 			GameManager.instance.positionsBuffer.Reverse();
 			transform.position = GameManager.instance.positionsBuffer[0];
 			GameManager.instance.positionsBuffer.Clear();
+			ghost.GetComponent<Materialize>().active = false;
+			ghost.GetComponent<Materialize>().value = 0.3f;
 			ghost.GetComponent<MeshRenderer>().enabled = false;
 			link.gameObject.SetActive(false);
 			coll.isTrigger = false;
@@ -195,6 +197,7 @@ public class PlayerController : MonoBehaviour
 		link.StartCoroutine(link.AppearingCouroutine());
 		yield return new WaitUntil(() => link.appearing == false);
 		ghost.GetComponent<MeshRenderer>().enabled = true;
+		ghost.GetComponent<Materialize>().active = true;
 		canRewind = true;
 		actualLinkReappearingCoroutine = null;
 	}
