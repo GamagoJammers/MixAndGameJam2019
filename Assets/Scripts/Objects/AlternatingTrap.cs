@@ -55,7 +55,7 @@ public class AlternatingTrap : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			if (GameManager.instance.actualDeathCoroutine == null)
+			if (!GameManager.instance.player.rewinding && GameManager.instance.actualDeathCoroutine == null)
 			{
 				GameManager.instance.actualDeathCoroutine = GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
 			}
