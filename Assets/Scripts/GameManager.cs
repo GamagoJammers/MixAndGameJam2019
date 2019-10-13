@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 		}
 
 		positionsBuffer = new List<Vector3>();
+		player.ghost.GetComponent<MeshRenderer>().enabled = false;
+		player.link.gameObject.SetActive(false);
 		StartCoroutine(FadeCoroutine("FadeIn"));
 	}
 
