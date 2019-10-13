@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	public bool rewinding;
 	public GhostController ghost;
 	public LinkController link;
+	public ParticleSystem rewindParticles;
 
 	//[HideInInspector]
 	public bool grounded;
@@ -113,6 +114,7 @@ public class PlayerController : MonoBehaviour
 			rb.gravityScale = 0.0f;
 			GameManager.instance.positionsBuffer.Reverse();
 			rewinding = true;
+			rewindParticles.Play();
 		}
 	}
 
@@ -135,6 +137,7 @@ public class PlayerController : MonoBehaviour
 			coll.isTrigger = false;
 			rb.gravityScale = 1.0f;
 			rewinding = false;
+			rewindParticles.Stop();
 		}
 	}
 }
