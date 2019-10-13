@@ -18,9 +18,12 @@ public class Toggler : MonoBehaviour
 	[Header("Affected Objects")]
 	public List<Transform> toggleList;
 
+	private ParticleSystem beaconParticles;
+
 	private void Awake()
 	{
 		canToggle = true;
+		beaconParticles = GetComponent<ParticleSystem>();
 	}
 
 
@@ -38,6 +41,11 @@ public class Toggler : MonoBehaviour
 				ToggleObjects();
 				StartCoroutine(ToggleCooldownCoroutine());
 				SwapSprites();
+
+				if (beaconParticles.isStopped)
+					beaconParticles.Play();
+				else
+					beaconParticles.Stop();
 			}
 			if (mode == ActivationMode.TemporaryRewind && collision.gameObject.GetComponent<PlayerController>().rewinding)
 			{
@@ -45,6 +53,7 @@ public class Toggler : MonoBehaviour
 				{
 					ToggleObjects();
 					SwapSprites();
+					beaconParticles.Play();
 				}
 				if(actualTemporaryToggleCoroutine != null)
 					StopCoroutine(actualTemporaryToggleCoroutine);
@@ -60,6 +69,11 @@ public class Toggler : MonoBehaviour
 			ToggleObjects();
 			StartCoroutine(ToggleCooldownCoroutine());
 			SwapSprites();
+
+			if (beaconParticles.isStopped)
+					beaconParticles.Play();
+				else
+					beaconParticles.Stop();
 		}
 		if (mode == ActivationMode.TemporaryRewind && collision.gameObject.GetComponent<PlayerController>().rewinding)
 		{
@@ -67,6 +81,7 @@ public class Toggler : MonoBehaviour
 			{
 				ToggleObjects();
 				SwapSprites();
+				beaconParticles.Play();
 			}
 			if (actualTemporaryToggleCoroutine != null)
 				StopCoroutine(actualTemporaryToggleCoroutine);
@@ -105,6 +120,7 @@ public class Toggler : MonoBehaviour
 	{
 		canToggle = false;
 		yield return new WaitForSeconds(toggleTimer);
+		beaconParticles.Stop();
 		ToggleObjects();
 		SwapSprites();
 		canToggle = true;

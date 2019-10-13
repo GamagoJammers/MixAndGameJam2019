@@ -147,7 +147,7 @@ MonoBehaviour:
   rewinding: 0
   ghost: {fileID: 0}
   link: {fileID: 0}
-  rewindParticles: {fileID: 0}
+  rewindParticles: {fileID: 7385803494219430202}
   grounded: 0
   collidableMask:
     serializedVersion: 2
