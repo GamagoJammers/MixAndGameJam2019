@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	public bool rewinding;
 	public GhostController ghost;
 	public LinkController link;
+	public ParticleSystem rewindParticles;
 
 	//[HideInInspector]
 	public bool grounded;
@@ -34,6 +35,12 @@ public class PlayerController : MonoBehaviour
 		//anim = GetComponent<Animator>();
 	}
 
+	private void FixedUpdate()
+	{
+		if (!GameManager.instance.isPaused && !rewinding)
+			UpdatePositionsBuffer();
+	}
+
 	private void Update()
 	{
 		if (!GameManager.instance.isPaused)
@@ -44,8 +51,8 @@ public class PlayerController : MonoBehaviour
 				Move();
 				Jump();
 
-				UpdatePositionsBuffer();
 				CheckRewind();
+				CheckReset();
 
 				//UpdateAnimatorParameters();
 			}
@@ -113,6 +120,7 @@ public class PlayerController : MonoBehaviour
 			rb.gravityScale = 0.0f;
 			GameManager.instance.positionsBuffer.Reverse();
 			rewinding = true;
+			rewindParticles.Play();
 		}
 	}
 
@@ -135,6 +143,15 @@ public class PlayerController : MonoBehaviour
 			coll.isTrigger = false;
 			rb.gravityScale = 1.0f;
 			rewinding = false;
+			rewindParticles.Stop();
+		}
+	}
+
+	public void CheckReset()
+	{
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
 		}
 	}
 }
