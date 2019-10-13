@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 				Jump();
 
 				CheckRewind();
+				CheckReset();
 
 				//UpdateAnimatorParameters();
 			}
@@ -140,6 +141,14 @@ public class PlayerController : MonoBehaviour
 			coll.isTrigger = false;
 			rb.gravityScale = 1.0f;
 			rewinding = false;
+		}
+	}
+
+	public void CheckReset()
+	{
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			GameManager.instance.StartCoroutine(GameManager.instance.DeathCoroutine());
 		}
 	}
 }
