@@ -39,7 +39,8 @@ public class Toggler : MonoBehaviour
 			if (mode == ActivationMode.Rewind && collision.gameObject.GetComponent<PlayerController>().rewinding && canToggle)
 			{
 				ToggleObjects();
-				StartCoroutine(ToggleCooldownCoroutine());
+				canToggle = false;
+				//StartCoroutine(ToggleCooldownCoroutine());
 				SwapSprites();
 
 				if (beaconParticles.isStopped)
