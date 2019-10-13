@@ -34,7 +34,7 @@ public class LinkController : MonoBehaviour
 			tempPos.RemoveRange(posNb, GameManager.instance.positionsBuffer.Count - posNb);
 			line.positionCount = tempPos.Count;
 			line.SetPositions(tempPos.ToArray());
-			posNb+=3;
+			posNb+=5;
 			yield return new WaitForEndOfFrame();
 		}
 		appearing = false;
