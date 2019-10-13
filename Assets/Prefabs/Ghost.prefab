@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1077844980919946467}
   - component: {fileID: 5626861705576353252}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077844980919946464}
   m_LocalRotation: {x: 0, y: 0.36825436, z: 0, w: 0.9297251}
-  m_LocalPosition: {x: 0, y: 3.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.49709, y: 0.92204, z: 0.49672}
   m_Children: []
   m_Father: {fileID: 0}

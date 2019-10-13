@@ -34,6 +34,12 @@ public class PlayerController : MonoBehaviour
 		//anim = GetComponent<Animator>();
 	}
 
+	private void FixedUpdate()
+	{
+		if (!GameManager.instance.isPaused && !rewinding)
+			UpdatePositionsBuffer();
+	}
+
 	private void Update()
 	{
 		if (!GameManager.instance.isPaused)
@@ -44,7 +50,6 @@ public class PlayerController : MonoBehaviour
 				Move();
 				Jump();
 
-				UpdatePositionsBuffer();
 				CheckRewind();
 
 				//UpdateAnimatorParameters();
